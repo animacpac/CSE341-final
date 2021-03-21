@@ -1,0 +1,67 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+
+  <title>ASSIGNMENT 11 team</title>
+  <meta name="description" content="DATABASE">
+
+</head>
+
+<body>
+
+<h1>Get information</h1>
+
+<br/><br/>
+
+<script>
+  async function console_log(){
+    
+    var testing = document.getElementById("logged").value;
+    var web = "http://www.omdbapi.com/?i=tt3896198&apikey=48710aeb&s="+testing;
+   try{
+    const response = await fetch(web);
+    
+   
+    if (!response.ok){
+            throw Error(response.statusText)
+        } else{
+        const fetchJson = await response.json();
+        var obj = JSON.stringify(fetchJson);
+        //document.getElementById("logging").innerHTML = fetchJson.Title;
+    
+      fetchJson.Search.forEach(element => {
+      const node = document.createElement('div');
+      node.innerHTML = element.Title;
+      document.getElementById("logging").appendChild(node);
+
+    });
+        console.log(fetchJson);
+        }
+       
+
+   }
+   catch(err){
+console.log(err + "this sucked")
+   }
+  }
+</script>
+
+  <form>
+    <label for="console_log">Infomation:</label>
+    <input type="text" id="logged" name="logged" value="jurassic"><br><br><br><br>
+    <input type="button" value="SUBMIT" onclick="console_log()">
+
+    <br/><br/>
+
+  </form>
+
+  <div id="logging"> 
+
+
+  </div>
+
+
+</body>
+</html>
