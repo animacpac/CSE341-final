@@ -1,11 +1,14 @@
-const express = require("express");
+const express = require('express');
 const hbs = require("hbs");
 const path = require("path");
 const app = express();
 
+const newLocal = '/utils/weatherData';
+const weatherData = require(newLocal);
+
 const port = process.env.PORT || 8080
 
-const publicStaticDirPath = path.join(__dirname, '/public')
+const publicStaticDirPath = path.join(__dirname, '/public');
 
 const viewsPath = path.join(__dirname, '/views/page');
 
@@ -17,13 +20,17 @@ hbs.registerPartials(partialsPath);
 app.use(express.static(publicStaticDirPath));
 
 
-app.get('', (req, res) =>{
+app.get('', (req, res) => {
   res.send("This is weather app");
 
 });
 
 app.get('/weather', (req, res) =>{
-  res.send("This is weather end point")
+  const address = req.query.address
+
+  weatherData(address, (result) => {
+    console.log(result);
+  });
 
 });
 
@@ -31,11 +38,10 @@ app.get("*", (req, res) =>{
   res.send("Page not found")
 
 });
-app.listen(app.get("port"), function(){
-    console.log("listening for connection on port: ", app.get("port"));
+app.listen(port, () => {
+  console.log("Listening on port: ", port);
+});
 
-});
-app.get('/', function(request, response) {
-  response.render('pages/index');
-});
+
+
 
