@@ -1,18 +1,22 @@
 const express = require('express');
+const app = express();
 const hbs = require("hbs");
 const path = require("path");
-const app = express();
 
-const newLocal = '/utils/weatherData';
+const port = process.env.PORT || 3000
+
+
+
+const newLocal = './utils/weatherData';
 const weatherData = require(newLocal);
 
-const port = process.env.PORT || 8080
 
-const publicStaticDirPath = path.join(__dirname, '/public');
 
-const viewsPath = path.join(__dirname, '/views/page');
+const publicStaticDirPath = path.join(__dirname, './public');
 
-const partialsPath = path.join(__dirname, '/views/partials');
+const viewsPath = path.join(__dirname, './views/page');
+
+const partialsPath = path.join(__dirname, './views/partials');
 
 app.set('view engine', 'hbs');
 app.set('views', viewsPath);
@@ -28,8 +32,17 @@ app.get('', (req, res) => {
 app.get('/weather', (req, res) =>{
   const address = req.query.address
 
-  weatherData(address, (result) => {
-    console.log(result);
+  weatherData(address, (error, {temperature, description, cityName}) => {
+    if(error) {
+      return res.send({
+        error: error
+      })
+    }
+
+    console.log(temperature, description, cityName);
+    res.send({
+      temperature, description, cityName
+    })
   });
 
 });
@@ -38,9 +51,12 @@ app.get("*", (req, res) =>{
   res.send("Page not found")
 
 });
+
 app.listen(port, () => {
-  console.log("Listening on port: ", port);
-});
+    console.log("Server is working on port:", port);
+})
+
+
 
 
 
