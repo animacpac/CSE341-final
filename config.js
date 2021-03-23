@@ -1,6 +1,6 @@
 const constants = {
-    openWeathermap: {
-        BASE_URL:"api.openweathermap.org/data/2.5/weather?q=",
+    openWeatherMap: {
+        BASE_URL: "https://api.openweathermap.org/data/2.5/weather?q=",
         SECRET_KEY:"74188ebedf353601a7b35fb95d26a502"
     }
 }

@@ -14,7 +14,7 @@ const weatherData = require(newLocal);
 
 const publicStaticDirPath = path.join(__dirname, './public');
 
-const viewsPath = path.join(__dirname, './views/page');
+const viewsPath = path.join(__dirname, './views/pages');
 
 const partialsPath = path.join(__dirname, './views/partials');
 
@@ -23,16 +23,17 @@ app.set('views', viewsPath);
 hbs.registerPartials(partialsPath);
 app.use(express.static(publicStaticDirPath));
 
-
 app.get('', (req, res) => {
-  res.send("This is weather app");
-
-});
+  res.render('index', {
+      title: 'Weather App'
+  })
+})
 
 
 app.get('/weather', (req, res) =>{
   const address = req.query.address
   if(!address){
+    
     return res.send({
       error: "You must enter address in search field"
     })

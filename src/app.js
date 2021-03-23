@@ -9,7 +9,7 @@ const port = process.env.PORT || 3000
 
 const publicStaticDirPath = path.join(__dirname, '../public')
 
-const viewsPath = path.join(__dirname, '../templates/views');
+const viewsPath = path.join(__dirname, '../view/pages');
 
 const partialsPath = path.join(__dirname, '../templates/partials');
 
