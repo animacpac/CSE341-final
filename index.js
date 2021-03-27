@@ -18,7 +18,7 @@ const viewsPath = path.join(__dirname, './views/pages');
 
 const partialsPath = path.join(__dirname, './views/partials');
 
-app.set('view engine', 'hbs');
+app.set('view engine', 'hbs', 'html');
 app.set('views', viewsPath);
 hbs.registerPartials(partialsPath);
 app.use(express.static(publicStaticDirPath));
@@ -53,7 +53,7 @@ app.get('/weather', (req, res) =>{
 });
 
 app.get('/About',(req, res) =>{
-res.redirect('./views/pages/about.hbs')
+res.redirect('./public/about.html')
 });
 
 app.get("*", (req, res) =>{
