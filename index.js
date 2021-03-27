@@ -53,7 +53,7 @@ app.get('/weather', (req, res) =>{
 });
 
 app.get('/About',(req, res) =>{
-res.render('./views/pages/about.hbs')
+res.send('./views/pages/about.hbs')
 });
 
 app.get("*", (req, res) =>{
