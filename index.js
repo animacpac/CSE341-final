@@ -25,20 +25,20 @@ app.use(express.static(publicStaticDirPath));
 
 app.get('', (req, res) => {
   res.render('index', {
-      title: 'Weather App'
+    title: 'Weather App'
   })
 })
 
-app.get('/weather', (req, res) =>{
+app.get('/weather', (req, res) => {
   const address = req.query.address
-  if(!address){
-    
+  if (!address) {
+
     return res.send({
       error: "You must enter address in search field"
     })
-  }  
-  weatherData(address, (error, {temperature, description, cityName}) => {
-    if(error) {
+  }
+  weatherData(address, (error, { temperature, description, cityName }) => {
+    if (error) {
       return res.send({
         error: error
       })
@@ -52,17 +52,33 @@ app.get('/weather', (req, res) =>{
 
 });
 
-app.get('/About',(req, res) =>{
-res.redirect('./public/about.html')
+app.get('/About', (req, res) => {
+  res.render('about')
 });
 
-app.get("*", (req, res) =>{
+app.get('/Goals', (req, res) => {
+  res.render('goal')
+});
+
+app.get('/Instructions', (req, res) => {
+  res.render('instructions')
+});
+
+app.get('/Manage', (req, res) => {
+  res.render('manage')
+});
+
+app.get('/Index', (req, res) => {
+  res.render('index')
+});
+
+app.get("*", (req, res) => {
   res.send("Page not found")
 
 });
 
 app.listen(port, () => {
-    console.log("Server is working on port:", port);
+  console.log("Server is working on port:", port);
 })
 
 
