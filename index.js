@@ -39,7 +39,7 @@ app.set('view engine', 'hbs', 'html');
 app.set('views', viewsPath);
 hbs.registerPartials(partialsPath);
 app.use(express.static(publicStaticDirPath));
-app.use(express.urlencoded({ extended: false}))
+//app.use(express.urlencoded({ extended: false}))
 //app.use(flash())
 
 /*app.use(session({
