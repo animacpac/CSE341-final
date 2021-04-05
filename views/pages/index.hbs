@@ -20,15 +20,14 @@
       <li class="nav-item">
         <a class="nav-link" href="/Instructions">instructions</a>
       </li>
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Dropdown link
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-          <a class="dropdown-item" href="/About">About</a>
-          <a class="dropdown-item" href="/Goals">Our Goal</a>
-          <a class="dropdown-item" href="/Manage">Instructions</a>
-        </div>
+      <li class="nav-item">
+        <a class="nav-link" href="/Login">Login</a>
+      </li>
+      </br></br>
+      <li class="nav-item">
+        <form action="/logout?_method=DELETE" method="POST">
+          <button="btn btn" type="submit">Logout</a>
+        </form>
       </li>
     </ul>
   </div>
@@ -96,6 +95,8 @@ function errorFunction(){
 </head>
 
     <body>
+      
+      <h1> Welcome <script type="text/javascript">  <%=name %></script></h1>
         <body onload="initialize()"> 
         <div class="main-content">
             {{>header}}
