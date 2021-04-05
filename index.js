@@ -1,6 +1,4 @@
-if (process.env.NODE_ENV !== 'production'){
-  require('dotenv').config()
-}
+
 
 const express = require('express');
 const app = express();
@@ -45,8 +43,9 @@ hbs.registerPartials(partialsPath);
 app.use(express.static(publicStaticDirPath));
 app.use(express.urlencoded({ extended: false}))
 app.use(flash())
+//app.use(connect.cookieParser())
 app.use(session({
-  //secret: process.env.SESSION_SECRET,
+  secret: "null",
   resave: false,
   saveUninitialized: false
 }))
