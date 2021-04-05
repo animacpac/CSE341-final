@@ -8,7 +8,7 @@ const hbs = require("hbs");
 const path = require("path");
 const bcrypt = require('bcrypt')
 const passport = require('passport')
-const flash = require('express-flash')
+//const flash = require('express-flash')
 const session = require('express-session')
 const methodOverride = require('method-override')
 
@@ -44,7 +44,7 @@ app.set('views', viewsPath);
 hbs.registerPartials(partialsPath);
 app.use(express.static(publicStaticDirPath));
 app.use(express.urlencoded({ extended: false}))
-app.use(flash())
+//app.use(flash())
 app.use(session({
   secret: process.env.SESSION_SECRET,
   resave: false,
@@ -114,7 +114,7 @@ app.post('/Register',  async (req, res) => {
 app.post('/Login', passport.authenticate('local', {
   successRedirect: '/', 
   failureRedirect: '/Login',
-  failureFlash: true
+  //failureFlash: true
 }) )
 
 app.delete('/Logout', (req, res) => {
