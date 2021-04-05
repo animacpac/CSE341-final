@@ -1,15 +1,13 @@
-
-
 const express = require('express');
 const app = express();
 const hbs = require("hbs");
 const path = require("path");
-const bcrypt = require('bcrypt')
-const passport = require('passport')
+//const bcrypt = require('bcrypt')
+//const passport = require('passport')
 //const flash = require('express-flash')
 //const session = require('express-session')
 //const methodOverride = require('method-override')
-
+/*
 const initializePassport = require('./passport-config');
 
 
@@ -19,7 +17,7 @@ initializePassport(
  id => user.find(user => user.id === id)
  )
 const users = []
-
+*/
 const port = process.env.PORT || 3000
 
 
