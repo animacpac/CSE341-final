@@ -8,7 +8,7 @@ const hbs = require("hbs");
 const path = require("path");
 const bcrypt = require('bcrypt')
 const passport = require('passport')
-const flash = require('flash')
+const flash = require('express-flash')
 const session = require('express-session')
 const methodOverride = require('method-override')
 
@@ -46,7 +46,7 @@ app.use(express.static(publicStaticDirPath));
 app.use(express.urlencoded({ extended: false}))
 app.use(flash())
 app.use(session({
-  secret: process.env.SESSION_SECRET,
+  //secret: process.env.SESSION_SECRET,
   resave: false,
   saveUninitialized: false
 }))
