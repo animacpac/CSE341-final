@@ -144,13 +144,13 @@ img {
 }
 
 .overlay {
-  position: absolute;
+  position:relative;
   top: 0;
   bottom: 0;
   left: 0;
   right: 0;
-  height: 50%;
-  width: 50%;
+  height: 25%;
+  width: 25%;
   opacity: 0;
   transition: .5s ease;
   background-color: lightsteelblue;
